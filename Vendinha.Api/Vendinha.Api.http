@@ -1,0 +1,47 @@
+@Vendinha.Api_HostAddress = http://localhost:5059
+
+### Cadastrar cliente (CPF válido de teste)
+POST {{Vendinha.Api_HostAddress}}/api/cliente
+Content-Type: application/json
+
+{
+  "nome": "Maria da Silva",
+  "cpf": "529.982.247-25",
+  "dataNascimento": "1990-05-20",
+  "email": "maria@email.com"
+}
+
+### Listar clientes (busca por nome opcional, página opcional)
+GET {{Vendinha.Api_HostAddress}}/api/cliente?pesquisa=maria&page=1
+Accept: application/json
+
+### Obter cliente
+GET {{Vendinha.Api_HostAddress}}/api/cliente/1
+
+### Atualizar cliente
+PUT {{Vendinha.Api_HostAddress}}/api/cliente/1
+Content-Type: application/json
+
+{
+  "nome": "Maria da Silva Souza",
+  "cpf": "52998224725",
+  "dataNascimento": "1990-05-20",
+  "email": ""
+}
+
+### Excluir cliente
+DELETE {{Vendinha.Api_HostAddress}}/api/cliente/1
+
+### Cadastrar dívida para o cliente 1
+POST {{Vendinha.Api_HostAddress}}/api/cliente/1/divida
+Content-Type: application/json
+
+{
+  "valor": 25.50
+}
+
+### Listar dívidas do cliente 1
+GET {{Vendinha.Api_HostAddress}}/api/cliente/1/divida
+
+### Marcar dívida 1 do cliente 1 como paga
+PUT {{Vendinha.Api_HostAddress}}/api/cliente/1/divida/1/pagamento
